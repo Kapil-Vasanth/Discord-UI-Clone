@@ -16,7 +16,7 @@ function App() {
           <Route path="/login" Component={Login} exact />    
           <Route path="/dashboard" Component={Dashboard} exact />    
           
-
+        
       </Routes>
   </BrowserRouter>
   );
