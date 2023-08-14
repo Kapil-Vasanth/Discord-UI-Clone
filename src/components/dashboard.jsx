@@ -1,37 +1,42 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import friendsImg from "../../assets/friends.svg";
 import stageDiscoveryImg from "../../assets/stage_discovery.svg";
 import nitroIconImg from "../../assets/nitro_icon.svg";
 
+
+const activeStyle = {
+  fontWeight: "bold",
+  textDecoration: "underline",
+  color: "#161616"
+}
 function Dashboard() {
   return (
     <div className="bg-[#2f3136] flex h-screen w-full text-white">
         <div className='bg-[#4f545c] p-4 min-[300px]:' >
             <input type="text" className='bg-[#2f3136] p-2 w-[250px]' placeholder='Find or start a conversation' />
             <div className='py-2 flex flex-col space-y-2'>
-              <Link to="/" className="font-bold flex p-2 bg-[#72767d]">
+              <NavLink to="/dashboard/add-friend" className={({isActive}) => isActive ? "font-bold flex p-2 bg-[#72767d]" : 'font-bold flex p-2'}>
                 <span className='mr-3'>
                 <svg width="24" height="24">{friendsSvg}</svg>
                 </span>
                     Friends
-              </Link>
-              <Link to="/" className="font-bold flex p-2">
+              </NavLink>
+              <NavLink to="/dashboard/stage-discovery" className={({isActive}) => isActive ? "font-bold flex p-2 bg-[#72767d]" : 'font-bold flex p-2'}>
                 <span className='mr-3'>
                 <svg width="24" height="24">{stageDiscoverySvg}</svg>
                 </span>
                 Stage Discovery
-              </Link>
-              <Link to="/" className="font-bold flex p-2">
-                <span className='mr-3 w-10'>
+              </NavLink>
+              <NavLink to="/dashboard/nitro" className={({isActive}) => isActive ? "font-bold flex p-2 bg-[#72767d]" : 'font-bold flex p-2'}>
+                <span className='mr-3'>
                     <svg width="24" height="24">{nitroSvg}</svg>
                 </span>
                   Nitro
-              </Link>
-              
+              </NavLink>
             </div>
-            <div>
-              <p>Direct Messages</p>
+            <div>    
+                <a href="" className="text-white flex justify-between mt-2">Direct Message <span>+</span></a> 
             </div>
         </div>
     </div>
