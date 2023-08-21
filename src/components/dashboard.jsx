@@ -14,7 +14,7 @@ function Dashboard() {
   return (
     <div className="bg-[#2f3136] flex h-screen w-full text-white">
         <div className='bg-[#23272a] p-2 min-[300px]:' >
-        <NavLink to="/dashboard/friend/add-friend" className={({isActive}) => isActive ? "bg-[#72767d]" : 'bg-red'}>
+        <NavLink to="/dashboard/friend/me" className={({isActive}) => isActive ? "bg-[#72767d]" : 'bg-red'}>
           <img src={discordLogo} alt="" className='w-[50px] h-[50px] rounded-[12px] bg-[#72767d]'/>
         </NavLink>
         <NavLink to="/dashboard/server" className={({isActive}) => isActive ? "bg-[#72767d]" : 'bg-red'}>

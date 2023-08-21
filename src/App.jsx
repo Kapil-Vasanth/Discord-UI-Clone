@@ -4,8 +4,9 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Hero from './components/Hero';
 import Dashboard from './components/dashboard';
-import Friend from "./components/Friend";
+import FriendLayout from "./components/FriendLayout";
 import Server from "./components/Server";
+import AddFriendPage from "./pages/AddFriendPage";
 
 import ErrorPage from "./error-page";
 
@@ -19,11 +20,11 @@ function App() {
 
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="server" element={<Server />} />
-          <Route path="friend" element={<Friend />}>
-            <Route index element={<Friend />} />
-            <Route path="add-friend" element={<Friend />} />
-            <Route path="stage-discovery" element={<Friend />} />
-            <Route path="nitro" element={<Friend />} />
+          <Route path="friend" element={<FriendLayout />}>
+            
+            <Route index path="me" element={<AddFriendPage />} />
+            <Route path="stage-discovery" element={<h1>Hello Stage</h1>} />
+            <Route path="nitro" element={<h1>Hello Nitro</h1>} />
           </Route>
         </Route>
 
