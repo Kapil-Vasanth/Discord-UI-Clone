@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet, redirect } from 'react-router-dom'
 import NitroIcon from '../../assets/nitro_icon.svg'
 import discordLogo from "../../assets/discord_logo.svg";
 import serverImg from "../../assets/new_line.png";
@@ -11,6 +11,9 @@ const activeStyle = {
   color: "#161616"
 }
 function Dashboard() {
+ 
+
+
   return (
     <div className="bg-[#2f3136] flex h-screen w-full text-white">
         <div className='bg-[#23272a] p-2 min-[300px]:' >

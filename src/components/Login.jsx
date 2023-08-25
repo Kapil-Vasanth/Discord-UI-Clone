@@ -1,15 +1,13 @@
 import React,{ useState } from 'react'
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import discordLogo from "../../assets/discord_main_logo.svg";
 import qrCodeImg from "../../assets/qr_code.png";
 import loginBg from "../../assets/login_bg.svg";
 function Login() {
-    
+    const navigate = useNavigate()
     
     const handleLogin =() => {
-        console.log("Navigatting to dashboard")
-        return <Navigate to="/"/>
-        
+        navigate("/dashboard/friend/me")
     }
 
   return (
@@ -33,7 +31,7 @@ function Login() {
                     
                     <a href="" className="text-blue-400 mb-6 block">Forgot your password?</a>
 
-                    <button className='bg-[#5865f2] w-full text-center py-2 text-lg font-bold' onClick={handleLogin}>Login</button>
+                    <button className='bg-[#5865f2] w-full text-center py-2 text-lg font-bold' onClick={() => handleLogin()}>Login</button>
 
                     <p className="text-blue-400 mb-2 mt-6"><span className='text-slate-500'>Need an account?</span>  <a href="/register">Register</a></p>
 
