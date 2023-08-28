@@ -5,10 +5,12 @@ import Login from './components/Login';
 import Hero from './components/Hero';
 import Dashboard from './components/dashboard';
 import FriendLayout from "./components/FriendLayout";
+import ServerLayout from "./components/ServerLayout";
 import Server from "./components/Server";
 import AddFriendPage from "./pages/AddFriendPage";
 
 import ErrorPage from "./error-page";
+import Channel from "./pages/Channel";
 
 function App() {
   return (
@@ -19,9 +21,10 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="server" element={<Server />} />
+          <Route path="server" element={<ServerLayout />} >
+            <Route index path="channels" element={<Channel />} />
+          </Route>
           <Route path="friend" element={<FriendLayout />}>
-            
             <Route index path="me" element={<AddFriendPage />} />
             <Route path="stage-discovery" element={<h1>Hello Stage</h1>} />
             <Route path="nitro" element={<h1>Hello Nitro</h1>} />
