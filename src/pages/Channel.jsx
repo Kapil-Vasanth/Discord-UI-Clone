@@ -7,20 +7,14 @@ function Channel() {
     <div className='w-full h-screen bg-[#3e4147]'>
         <div className="flex justify-between py-4 px-4 shadow-lg shadow-gray-450">
             <div className='flex space-between '>
-            
                 <div className='hover:bg-gray-600 p-1 rounded cursor-pointer' >#  Javascript</div>
                 <div>
                     {/* fix this images */}
                     <img className='w-[200px] h-[200px]' src="../../assets/user_plus_icon.svg" alt="" />
                 </div>
-                
-
             </div>
-            
         </div>
         <div className="tab-content h-[850px]">
-           
-         
                  <div className='flex h-full'>
                  <div className='flex-grow px-6 py-4'>
                      <div>
@@ -40,14 +34,9 @@ function Channel() {
                      <h2 className='font-bold text-xl'>Active Now</h2>
                      <h4 className='text-center font-bold text-[18px] mt-5'>It's quiet for now...</h4>
                      <p className='text-center mt-3'>When a friend starts an activity--- like playing a game or hanging out on voice---we'll show it here!</p>
-                     
                  </div>
-
-             </div>
-
-            
+             </div> 
         </div>
-
     </div>
   )
 }
