@@ -59,3 +59,26 @@ const nitroSvg = (
 )
 
 export default Dashboard
+
+var picker1 = new Pikaday({
+  field:  dateEntered,confirmed,scheduled,performed,
+  firstDay: 1,
+  defaultDate:new Date(),
+  format: 'DD/MM/YYYY',
+  onSelect: function() {
+    document.getElementById('dateEntered').value = this.getMoment().format('llll').slice(0,17); //formats the date to dayOFTheWeek, month, day, year and time 
+    document.getElementById('vt_hidden_date_entered').value = this.getMoment().format('YYYY-MM-DD') + "T00:00:00";//formats the date into mm/dd/yy
+  },
+  onSelect: function() {
+      document.getElementById('confirmed').value = this.getMoment().format('llll').slice(0,17);
+      document.getElementById('vt_hidden_confirmed').value = this.getMoment().format('YYYY-MM-DD') + "T00:00:00";
+  },
+  onSelect: function() {
+      document.getElementById('scheduled').value = this.getMoment().format('llll').slice(0,17); 
+      document.getElementById('vt_hidden_scheduled').value = this.getMoment().format('YYYY-MM-DD') + "T00:00:00"; 
+  },
+  onSelect: function() {
+      document.getElementById('performed').value = this.getMoment().format('llll').slice(0,17);
+      document.getElementById('vt_hidden_performed').value = this.getMoment().format('YYYY-MM-DD') + "T00:00:00";
+  }
+});
